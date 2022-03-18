@@ -1,0 +1,164 @@
+<div class="title-container">
+
+
+    <div class="title-1">
+      <h2>Cadastrar Funcionarios: </h2>
+    </div>
+
+    <div class="title-2">
+      <h2>Funcionarios Cadastrados: </h2>
+    </div>
+
+
+
+</div>
+
+<div class="body-content">
+<!-- form de cadastro -->
+  <form class="form-container">
+
+    <div class="form-tamanho">
+
+        <div class="form-small-container">
+          <p class="paragrafo">CPF:</p>
+          <input class="form-input" type="text" name="cpf" id="cpf_input"  [(ngModel)]="funcionario.cpf">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">Name:</p>
+          <input class="form-input" type="text" name="name" id="name-input"  [(ngModel)]="funcionario.name">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">Age: </p>
+          <input class="form-input" type="number" name="age" id="age_input"  [(ngModel)]="funcionario.age">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">birthDate: </p>
+          <input class="form-input" type="text" name="birthDate" id="birthDate_input"  [(ngModel)]="funcionario.birthDate">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">Company: </p>
+          <input class="form-input" type="text" name="company" id="company_input"  [(ngModel)]="funcionario.company">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">Position: </p>
+          <input class="form-input" type="text" name="position" id="position_input"  [(ngModel)]="funcionario.position">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">Salary: </p>
+          <input class="form-input" type="number" name="salary" id="salary_input"  [(ngModel)]="funcionario.salary">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">State: </p>
+          <input class="form-input" type="text" name="state" id="state_input" [(ngModel)]="funcionario.state">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">City: </p>
+          <input class="form-input" type="text" name="city" id="city_input" [(ngModel)]="funcionario.city">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">District: </p>
+          <input class="form-input" type="text" name="district" id="district_input"  [(ngModel)]="funcionario.district">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">Street: </p>
+          <input class="form-input" type="text" name="street" id="street_input"  [(ngModel)]="funcionario.street">
+        </div>
+
+        <div class="form-small-container">
+          <p class="paragrafo">Number of Street: </p>
+          <input class="form-input" type="number" name="numberOfStreet" id="numberOfStreet_input"  [(ngModel)]="funcionario.numberOfStreet">
+        </div>
+
+        <div class="form-small-container">
+          <button class="button-blue" type="button" (click)="cadastrar()">Cadastrar</button>
+        </div>
+
+    </div>
+
+  </form>
+
+  <table class="table-result">
+
+        <tr class="tr-content-title">
+          <th class="tr-content-atribute">CPF:</th>
+          <th class="tr-content-atribute">Nome</th>
+          <th class="tr-content-atribute">Idade</th>
+          <th class="tr-content-atribute">Nascimento</th>
+          <th class="tr-content-atribute">Empresa</th>
+          <th class="tr-content-atribute">Cargo</th>
+          <th class="tr-content-atribute">Salario</th>
+          <th class="tr-content-atribute">Estado</th>
+          <th class="tr-content-atribute">Cidade</th>
+          <th class="tr-content-atribute">Bairro</th>
+          <th class="tr-content-atribute">Rua</th>
+          <th class="tr-content-atribute">Numero</th>
+          <th class="tr-content-atribute" id="th-action">Ações</th>
+        </tr>
+
+        <!-- ngFor precisa ser direto na tabela que vai receber! -->
+        <!-- função remover(funcionario.cpf) só sabe qual é o cpf pra remover por que é um for na tr!!! -->
+        <tr tr class="tr-content" *ngFor='let funcionario of funcionarios'>
+          <th class="tr-content-result">{{funcionario.cpf}}</th>
+          <th class="tr-content-result">{{funcionario.name}}</th>
+          <th class="tr-content-result">{{funcionario.age}}</th>
+          <th class="tr-content-result">{{funcionario.birthDate}}</th>
+          <th class="tr-content-result">{{funcionario.company}}</th>
+          <th class="tr-content-result">{{funcionario.position}}</th>
+          <th class="tr-content-result">{{funcionario.salary}}</th>
+          <th class="tr-content-result">{{funcionario.state}}</th>
+          <th class="tr-content-result">{{funcionario.city}}</th>
+          <th class="tr-content-result">{{funcionario.district}}</th>
+          <th class="tr-content-result">{{funcionario.street}}</th>
+          <th class="tr-content-result">{{funcionario.numberOfStreet}}</th>
+          <!-- <th><button (click)="atualizar(funcionario.cpf)">Atualizar</button></th> -->
+          <th class="tr-content-result"><button type="button" class="button-remove" (click)="remover(funcionario.cpf)">Remover</button></th>
+        </tr>
+
+
+  </table>
+
+</div>
+
+<div class="busca-id">
+
+  <div class="buscaId-container-block">
+    <div class="buscaId-container">
+      <p>Digite o id da busca:</p>
+      <input class="form-input" type="text" name="id-busca" id="cpf_input"  [(ngModel)]="id">
+      <button type="button" class="button-blue" (click)="buscarFuncionarioId(id)">Buscar</button>
+    </div>
+  </div>
+  <ng-container *ngIf="funcionario.name">
+    <table class="busca-id-container-result">
+      <tr class="result-tr">
+        <th class="tr-content-result">{{funcionario.name}}</th>
+        <th class="tr-content-result">{{funcionario.age}}</th>
+        <th class="tr-content-result">{{funcionario.birthDate}}</th>
+        <th class="tr-content-result">{{funcionario.company}}</th>
+        <th class="tr-content-result">{{funcionario.position}}</th>
+        <th class="tr-content-result">{{funcionario.salary}}</th>
+        <th class="tr-content-result">{{funcionario.state}}</th>
+        <th class="tr-content-result">{{funcionario.city}}</th>
+        <th class="tr-content-result">{{funcionario.district}}</th>
+        <th class="tr-content-result">{{funcionario.street}}</th>
+        <th class="tr-content-result">{{funcionario.numberOfStreet}}</th>
+      </tr>
+    </table>
+  </ng-container>
+  </div>
+
+
+
+
+
+<!-- tempo do video: 27:16 -->

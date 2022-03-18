@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl:"http://localhost:5000/funcionario/"   //Local pra colocar a url da api que se repete
 };
 
 /*
